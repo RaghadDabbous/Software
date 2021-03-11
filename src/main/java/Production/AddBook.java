@@ -14,13 +14,10 @@ public class AddBook {
 	}
 
 	public static boolean isISBN10(String number) {
-
-	      // declare variables
 	      int sum = 0;
 	      int digit = 0;
 	      char ch = '\0';
 
-	      // add upto 9th digit
 	      for(int i=1; i<=9; i++) {
 	         ch = number.charAt(i-1);
 	         digit = Character.getNumericValue(ch);

@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import Production.AddBook;
 import Production.Book;
+import Production.Login;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -16,6 +17,7 @@ public class AddBookStepsTest {
 	String message;
 	
 	
+	
 
 	public AddBookStepsTest(AddBook myBook) {
 		
@@ -23,19 +25,26 @@ public class AddBookStepsTest {
 	}
 	@Given("The administrator has logged in")
 	public void the_administrator_has_logged_in() {
-	   isLogin=true;
+	   Login.isLoged=true;
 	}
 	@Given("Administrator not logged in")
 	public void administrator_not_logged_in() {
-		isLogin=false;
+		Login.isLoged=false;
 	}
 	
 	@When("admin add book with {string}  and {string}  and {string}  and {string}")
 	public void admin_add_book_with_and_and_and(String title, String author, String signature, String isbn) {
-		 if(isLogin) {
-		    	myBook.Add(title,author,signature,isbn);
-		    	message="The book has been added successfully";
-		    	System.out.println(message);
+		 if(Login.isLoged) {
+			    isValidISBN=myBook.isISBN10(isbn);
+			    if(isValidISBN) {
+			    	myBook.Add(title,author,signature,isbn);
+			    	message="The book has been added successfully";
+			    	System.out.println(message);
+			    }
+			    else {
+		    		message = "invalid ISBN";
+		    		System.out.println(message);
+		    	}
 		    }
 		    else {
 		    	message="The book cannot be added, please login first";
@@ -58,7 +67,7 @@ public class AddBookStepsTest {
 	
 	@When("admin add book with Title {string}  and Author {string}  and Signature {string}  and ISBN {string}")
 	public void admin_add_book_with_title_and_author_and_signature_and_isbn(String title, String author, String signature, String isbn) {
-		if(isLogin) {
+		if(Login.isLoged) {
 	    	myBook.Add(title,author,signature,isbn);
 	    	isValidSignature=myBook.checkSignature();
 	    	if(isValidSignature) {
@@ -81,7 +90,7 @@ public class AddBookStepsTest {
 	
 	@When("admin add book with Title {string}  and Author {string}  and Signature {string}  and invalid ISBN {string}")
 	public void admin_add_book_with_title_and_author_and_signature_and_invalid_isbn(String title, String author, String signature, String isbn) {
-		if(isLogin) {
+		if(Login.isLoged) {
 	    ///	myBook.Add(title,author,signature,isbn);
 	    	isValidISBN=myBook.isISBN10(isbn);
 	    	if(isValidISBN) {

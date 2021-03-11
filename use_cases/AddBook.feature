@@ -8,7 +8,7 @@ When admin add book with <Title>  and <Author>  and <Signature>  and <ISBN>
 Then the book will be added
 
 Examples:
-|Title	                                   | Author	            |	Signature	        |	ISBN       |		
+|Title	                                   | Author	            |	Signature	        |	ISBN         |		
 |"Thinking, Fast and Slow"	               |	"Daniel Kahneman"	|	"Kahneman2012"	  |	"0141033576" |
 |"Act Like a Success, Think Like a Success"|	"Steve Harvey"		|"Harvey2015"	      |	"0062220330" |
 |"Mind Change"		                         |"Susan Greenfield"  |	"Greenfield2014"  |"1473501067"  |
