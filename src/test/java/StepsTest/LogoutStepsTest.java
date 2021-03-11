@@ -10,17 +10,18 @@ import io.cucumber.java.en.When;
 
 public class LogoutStepsTest {
 	public Login isLogin;
-	public boolean flag,done;
+	public boolean done;
 	public Logout outt;
 	
 	@Given("admin should be loged in")
 	public void admin_should_be_loged_in() {
-	    flag=true;
+	   // flag=true;
+		Login.isLoged=true;
 	}
 
 	@When("i call the Logout function")
 	public void i_call_the_logout_function() {
-		done=outt.logoutFunction(flag);
+		done=outt.logoutFunction(Login.isLoged);
 	}
 
 	@Then("the administrator should be loged out")
