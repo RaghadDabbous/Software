@@ -4,19 +4,19 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
-import Production.Login;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import production.Login;
 
-public class LoginStepsTest {
+public class LoginSteps {
 	public List<List<String>> Admin;
 	public Login L;
 	public static String em,pass;
 	public Boolean correct,loginPage;
 	
 	
-	public LoginStepsTest(Login l) {
+	public LoginSteps(Login l) {
 		L = l;
 	}
 	
@@ -38,7 +38,7 @@ public class LoginStepsTest {
 
 	@When("I call  Login Func")
 	public void i_call_login_func() {
-		correct=L.LoginFunc(em,pass,Admin);
+		correct=L.loginFunc(em,pass,Admin);
 	}
 
 	@Then("I should see Login successful")
